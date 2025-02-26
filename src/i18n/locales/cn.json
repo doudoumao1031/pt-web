@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "首页",
+    "apps": "应用",
+    "developer": "开发者",
+    "faq": "常见问题",
+    "privacy": "隐私",
+    "news": "新闻",
+    "language": "简体中文"
+  },
+  "hero": {
+    "title": "简单安全",
+    "subtitle": "可靠的消息传递",
+    "description": "使用POTATO，您可以通过手机快速、轻松、安全地在世界各地发送和接收消息和通话。"
+  },
+  "download": {
+    "android": "安卓下载",
+    "iphone": "iPhone下载",
+    "internal": "内部测试版本（中国区域）",
+    "beta": "如何下载测试版？",
+    "windows": "Windows",
+    "macos": "macOS",
+    "learn": "了解更多"
+  },
+  "features": {
+    "title": "优势和特点",
+    "cloud": {
+      "title": "云端",
+      "description": "支持多终端登录，消息自动同步"
+    },
+    "safe": {
+      "title": "安全",
+      "description": "使用最先进的加密技术确保信息安全"
+    },
+    "free": {
+      "title": "免费",
+      "description": "消息和文件大小无限制"
+    },
+    "fast": {
+      "title": "快速",
+      "description": "为用户提供超快的连接和体验"
+    },
+    "wallet": {
+      "title": "钱包",
+      "description": "支持多币种管理、支付和红包"
+    },
+    "bot": {
+      "title": "机器人",
+      "description": "通过API自由创建机器人"
+    },
+    "groups": {
+      "title": "群组",
+      "description": "创建最多200,000名成员的超级群组"
+    },
+    "privacy": {
+      "title": "隐私",
+      "description": "消息加密可定制为自毁"
+    },
+    "open": {
+      "title": "开放",
+      "description": "多元化和自由的平台"
+    },
+    "fun": {
+      "title": "有趣",
+      "description": "发现有趣的事物和有趣的人"
+    },
+    "videocall": {
+      "title": "视频通话",
+      "description": "免费体验高质量的语音和视频通话"
+    },
+    "moments": {
+      "title": "朋友圈",
+      "description": "分享和发布更新"
+    },
+    "nearby": {
+      "title": "附近的人",
+      "description": "根据位置找到您的朋友"
+    },
+    "miniprograms": {
+      "title": "小程序",
+      "description": "无需下载和安装即可体验"
+    }
+  },
+  "feedback": {
+    "title": "用户评价",
+    "user": "用户",
+    "regularUser": "普通用户",
+    "testimonial": "Potato Chat彻底改变了我与朋友和家人交流的方式。界面直观，功能正是我所需要的。"
+  },
+  "news": {
+    "title": "最新消息",
+    "stayTuned": "敬请期待Potato Chat的最新更新！"
+  },
+  "footer": {
+    "mobileApps": "移动应用",
+    "desktopApps": "桌面应用",
+    "community": "官方社区",
+    "subscribe": "订阅我们",
+    "emailPlaceholder": "输入您的电子邮件进行订阅",
+    "subscribeButton": "电子邮件订阅"
+  },
+  "sidebar": {
+    "features": "特点",
+    "feedback": "反馈",
+    "news": "新闻",
+    "backToTop": "返回顶部"
+  }
+} 

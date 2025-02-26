@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 import { 
   FaCloud, 
   FaShieldAlt, 
@@ -39,6 +40,10 @@ const iconMap = {
 export default function MobileFeature({ feature }) {
   const [imageError, setImageError] = useState(false);
   const IconComponent = iconMap[feature.icon] || FaCloud;
+  const { t } = useTranslation();
+  
+  // Extract feature key from icon name (e.g., 'ic_cloud.svg' -> 'cloud')
+  const featureKey = feature.icon.replace('ic_', '').replace('.svg', '');
   
   const getFeatureColor = (title) => {
     const colorMap = {
@@ -67,7 +72,7 @@ export default function MobileFeature({ feature }) {
         {!imageError ? (
           <Image 
             src={`/images/${feature.icon}`} 
-            alt={feature.title}
+            alt={t(`features.${featureKey}.title`)}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-contain"
@@ -75,13 +80,13 @@ export default function MobileFeature({ feature }) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-blue-50 rounded-lg">
-            <IconComponent className={`text-xl ${getFeatureColor(feature.title)}`} />
+            <IconComponent className={`text-xl ${getFeatureColor(t(`features.${featureKey}.title`))}`} />
           </div>
         )}
       </div>
       <div>
-        <h3 className="text-lg font-medium text-gray-700 mb-1">{feature.title}</h3>
-        <p className="text-sm text-gray-500">{feature.description}</p>
+        <h3 className="text-lg font-medium text-gray-700 mb-1">{t(`features.${featureKey}.title`)}</h3>
+        <p className="text-sm text-gray-500">{t(`features.${featureKey}.description`)}</p>
       </div>
     </div>
   );

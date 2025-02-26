@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "HOME",
+    "apps": "APPS",
+    "developer": "DEVELOPER",
+    "faq": "FAQ",
+    "privacy": "PRIVACY",
+    "news": "NEWS",
+    "language": "English"
+  },
+  "hero": {
+    "title": "Easy and safe",
+    "subtitle": "Reliable messaging",
+    "description": "With POTATO, you can send and receive messages and calls quickly, easily and securely around the world via your mobile phone."
+  },
+  "download": {
+    "android": "Android Download",
+    "iphone": "iPhone Download",
+    "internal": "Internal test version (China Area)",
+    "beta": "How to download beta version?",
+    "windows": "Windows",
+    "macos": "macOS",
+    "learn": "Learn More"
+  },
+  "features": {
+    "title": "Advantages and specialties",
+    "cloud": {
+      "title": "Cloud",
+      "description": "Support multi-terminal login, message will synchronize automatically"
+    },
+    "safe": {
+      "title": "Safe",
+      "description": "Use the most advanced encryption technology to ensure information security"
+    },
+    "free": {
+      "title": "Free",
+      "description": "No limits on message and file sizes"
+    },
+    "fast": {
+      "title": "Fast",
+      "description": "Provides users with super-fast connections and experience"
+    },
+    "wallet": {
+      "title": "Wallet",
+      "description": "Support Multi-currency management, Payment and Red Packet"
+    },
+    "bot": {
+      "title": "Bot",
+      "description": "Freely create bots through API"
+    },
+    "groups": {
+      "title": "Groups",
+      "description": "Create a super group of up to 200,000 members"
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Message encryption can be customized to self-destruction"
+    },
+    "open": {
+      "title": "Open",
+      "description": "A diverse and free platform"
+    },
+    "fun": {
+      "title": "Fun",
+      "description": "Find funny things and interesting people"
+    },
+    "videocall": {
+      "title": "Video Call",
+      "description": "Experience high-quality voice and video calls for free"
+    },
+    "moments": {
+      "title": "Moments",
+      "description": "Share and post updates"
+    },
+    "nearby": {
+      "title": "People Nearby",
+      "description": "Find your friends based on location"
+    },
+    "miniprograms": {
+      "title": "Mini Programs",
+      "description": "Experience it without downloading and installation"
+    }
+  },
+  "feedback": {
+    "title": "What our users say",
+    "user": "User",
+    "regularUser": "Regular user",
+    "testimonial": "Potato Chat has completely changed how I communicate with friends and family. The interface is intuitive and the features are exactly what I need."
+  },
+  "news": {
+    "title": "Latest News",
+    "stayTuned": "Stay tuned for the latest updates from Potato Chat!"
+  },
+  "footer": {
+    "mobileApps": "Mobile Apps",
+    "desktopApps": "Desktop Apps",
+    "community": "Official Community",
+    "subscribe": "Subscribe to us",
+    "emailPlaceholder": "Enter your email to subscribe",
+    "subscribeButton": "Email subscription"
+  },
+  "sidebar": {
+    "features": "Features",
+    "feedback": "Feedback",
+    "news": "News",
+    "backToTop": "Back to Top"
+  }
+} 

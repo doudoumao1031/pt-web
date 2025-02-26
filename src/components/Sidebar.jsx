@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { FaRocket, FaCommentAlt, FaNewspaper, FaArrowUp } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 export default function Sidebar({ isMobile }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,21 +43,21 @@ export default function Sidebar({ isMobile }) {
       <div className={spacing}>
         <SidebarItem 
           icon={<FaRocket />} 
-          label="Features" 
+          label={t('sidebar.features')} 
           onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}
           itemSize={itemSize}
           iconSize={iconSize}
         />
         <SidebarItem 
           icon={<FaCommentAlt />} 
-          label="Feedback" 
+          label={t('sidebar.feedback')} 
           onClick={() => document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' })}
           itemSize={itemSize}
           iconSize={iconSize}
         />
         <SidebarItem 
           icon={<FaNewspaper />} 
-          label="News" 
+          label={t('sidebar.news')} 
           onClick={() => document.getElementById('news').scrollIntoView({ behavior: 'smooth' })}
           itemSize={itemSize}
           iconSize={iconSize}
@@ -63,7 +65,7 @@ export default function Sidebar({ isMobile }) {
         {showScrollTop && (
           <SidebarItem 
             icon={<FaArrowUp />} 
-            label="Back to Top" 
+            label={t('sidebar.backToTop')} 
             onClick={scrollToTop}
             itemSize={itemSize}
             iconSize={iconSize}

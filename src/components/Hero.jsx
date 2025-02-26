@@ -1,10 +1,14 @@
+'use client'
+
 import { useState } from 'react';
 import Image from 'next/image';
 import { FaAndroid, FaApple, FaWindows, FaDownload } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next';
 import DownloadButtons from './client/DownloadButtons'
 
 export default function Hero({ isMobile }) {
   const [screenshotError, setScreenshotError] = useState(false);
+  const { t } = useTranslation();
 
   if (isMobile) {
     return (
@@ -12,9 +16,9 @@ export default function Hero({ isMobile }) {
         <div className="px-4">
           <div className="text-center">
             <h1 className="text-3xl font-medium text-gray-800 mb-2">
-              Easy and safe
+              {t('hero.title')}
               <br/>
-              Reliable messaging
+              {t('hero.subtitle')}
             </h1>
             
             <DownloadButtons isMobile={true} />
@@ -30,13 +34,13 @@ export default function Hero({ isMobile }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="text-left">
             <h1 className="text-5xl font-bold text-gray-800 mb-6">
-              Easy and safe
+              {t('hero.title')}
               <br/>
-              <span className="text-gray-800">Reliable messaging</span>
+              <span className="text-gray-800">{t('hero.subtitle')}</span>
             </h1>
             
             <p className="text-xl text-gray-600 mb-12">
-              With POTATO, you can send and receive messages and calls quickly, easily and securely around the world via your mobile phone.
+              {t('hero.description')}
             </p>
             
             <DownloadButtons isMobile={false} />

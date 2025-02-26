@@ -1,14 +1,30 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaTwitter, FaBars } from 'react-icons/fa';
+import { FaTwitter, FaBars, FaGlobeAsia } from 'react-icons/fa';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
+import { LanguageContext } from '@/contexts/LanguageContext';
 
 export default function Navbar({ isMobile }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
+  const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const { t } = useTranslation();
+  const { language, changeLanguage } = useContext(LanguageContext);
+
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'cn', name: '简体中文' },
+    { code: 'tw', name: '繁體中文' }
+  ];
+
+  const handleLanguageChange = (code) => {
+    changeLanguage(code);
+    setLangMenuOpen(false);
+  };
 
   if (isMobile) {
     return (
@@ -37,22 +53,48 @@ export default function Navbar({ isMobile }) {
               </Link>
             </div>
             
-            <button 
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-500 focus:outline-none"
-            >
-              <FaBars className="h-5 w-5" />
-            </button>
+            <div className="flex items-center">
+              <div className="relative mr-4">
+                <button 
+                  onClick={() => setLangMenuOpen(!langMenuOpen)}
+                  className="flex items-center text-gray-500 focus:outline-none"
+                >
+                  <FaGlobeAsia className="h-5 w-5 mr-1" />
+                  <ChevronDownIcon className="h-4 w-4" />
+                </button>
+                
+                {langMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50">
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => handleLanguageChange(lang.code)}
+                        className={`block w-full text-left px-4 py-2 text-sm ${language === lang.code ? 'bg-blue-50 text-blue-500' : 'text-gray-700 hover:bg-gray-50'}`}
+                      >
+                        {lang.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              <button 
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-gray-500 focus:outline-none"
+              >
+                <FaBars className="h-5 w-5" />
+              </button>
+            </div>
           </div>
           
           {menuOpen && (
             <div className="py-2 border-t border-gray-200">
-              <Link href="#home" className="block py-2 text-blue-500">HOME</Link>
-              <Link href="#apps" className="block py-2 text-gray-600">APPS</Link>
-              <Link href="#developer" className="block py-2 text-gray-600">DEVELOPER</Link>
-              <Link href="#faq" className="block py-2 text-gray-600">FAQ</Link>
-              <Link href="#privacy" className="block py-2 text-gray-600">PRIVACY</Link>
-              <Link href="#news" className="block py-2 text-gray-600">NEWS</Link>
+              <Link href="#home" className="block py-2 text-blue-500">{t('nav.home')}</Link>
+              <Link href="#apps" className="block py-2 text-gray-600">{t('nav.apps')}</Link>
+              <Link href="#developer" className="block py-2 text-gray-600">{t('nav.developer')}</Link>
+              <Link href="#faq" className="block py-2 text-gray-600">{t('nav.faq')}</Link>
+              <Link href="#privacy" className="block py-2 text-gray-600">{t('nav.privacy')}</Link>
+              <Link href="#news" className="block py-2 text-gray-600">{t('nav.news')}</Link>
             </div>
           )}
         </div>
@@ -88,18 +130,37 @@ export default function Navbar({ isMobile }) {
           </div>
           
           <div className="hidden md:flex space-x-12">
-            <Link href="#home" className="text-blue-500 border-b-2 border-blue-500 pb-1 font-medium">HOME</Link>
-            <Link href="#apps" className="text-gray-400 hover:text-blue-500 font-medium">APPS</Link>
-            <Link href="#developer" className="text-gray-400 hover:text-blue-500 font-medium">DEVELOPER</Link>
-            <Link href="#faq" className="text-gray-400 hover:text-blue-500 font-medium">FAQ</Link>
-            <Link href="#privacy" className="text-gray-400 hover:text-blue-500 font-medium">PRIVACY</Link>
-            <Link href="#news" className="text-gray-400 hover:text-blue-500 font-medium">NEWS</Link>
+            <Link href="#home" className="text-blue-500 border-b-2 border-blue-500 pb-1 font-medium">{t('nav.home')}</Link>
+            <Link href="#apps" className="text-gray-400 hover:text-blue-500 font-medium">{t('nav.apps')}</Link>
+            <Link href="#developer" className="text-gray-400 hover:text-blue-500 font-medium">{t('nav.developer')}</Link>
+            <Link href="#faq" className="text-gray-400 hover:text-blue-500 font-medium">{t('nav.faq')}</Link>
+            <Link href="#privacy" className="text-gray-400 hover:text-blue-500 font-medium">{t('nav.privacy')}</Link>
+            <Link href="#news" className="text-gray-400 hover:text-blue-500 font-medium">{t('nav.news')}</Link>
           </div>
 
           <div className="flex items-center space-x-6">
-            <div className="flex items-center text-gray-500">
-              <span>English</span>
-              <ChevronDownIcon className="h-5 w-5 ml-1" />
+            <div className="relative">
+              <button 
+                onClick={() => setLangMenuOpen(!langMenuOpen)}
+                className="flex items-center text-gray-500 hover:text-blue-500 transition-colors"
+              >
+                <span>{t('nav.language')}</span>
+                <ChevronDownIcon className="h-5 w-5 ml-1" />
+              </button>
+              
+              {langMenuOpen && (
+                <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className={`block w-full text-left px-4 py-2 text-sm ${language === lang.code ? 'bg-blue-50 text-blue-500' : 'text-gray-700 hover:bg-gray-50'}`}
+                    >
+                      {lang.name}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
             <Link href="#twitter" className="text-gray-400 hover:text-blue-500">
               <FaTwitter className="h-5 w-5" />

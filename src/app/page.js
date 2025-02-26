@@ -8,6 +8,7 @@ import Sidebar from '@/components/Sidebar'
 import Feedback from '@/components/Feedback'
 import Footer from '@/components/Footer'
 import { features } from '@/constants/features'
+import '@/i18n/config'
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false)

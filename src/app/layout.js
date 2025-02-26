@@ -1,4 +1,6 @@
 import './globals.css'
+import { LanguageProvider } from '@/contexts/LanguageContext'
+import I18nProvider from '@/components/I18nProvider'
 
 export const metadata = {
   title: 'Potato Chat - Easy and Safe Messaging',
@@ -8,7 +10,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <I18nProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </I18nProvider>
+      </body>
     </html>
   )
 } 
