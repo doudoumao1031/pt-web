@@ -1,7 +1,9 @@
+'use client'
+
 import { useState, useEffect } from 'react';
 import { FaRocket, FaCommentAlt, FaNewspaper, FaArrowUp } from 'react-icons/fa';
 
-export default function Sidebar() {
+export default function Sidebar({ isMobile }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -24,32 +26,62 @@ export default function Sidebar() {
     });
   };
 
+  // Position sidebar on the right side for both mobile and desktop
+  // Just adjust the size and position slightly for mobile
+  const sidebarPosition = isMobile 
+    ? "fixed right-2 bottom-20 z-40" 
+    : "fixed right-6 top-1/2 transform -translate-y-1/2 z-40";
+  
+  const itemSize = isMobile ? "p-3" : "p-4";
+  const iconSize = isMobile ? "text-lg" : "text-xl";
+  const spacing = isMobile ? "space-y-3" : "space-y-6";
+
   return (
-    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40">
-      <div className="flex flex-col space-y-6">
-        <SidebarItem icon={<FaCommentAlt />} label="Chat" />
-        <SidebarItem icon={<FaRocket />} label="Features" />
-        <SidebarItem icon={<FaNewspaper />} label="News" />
-        
+    <div className={sidebarPosition}>
+      <div className={spacing}>
+        <SidebarItem 
+          icon={<FaRocket />} 
+          label="Features" 
+          onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}
+          itemSize={itemSize}
+          iconSize={iconSize}
+        />
+        <SidebarItem 
+          icon={<FaCommentAlt />} 
+          label="Feedback" 
+          onClick={() => document.getElementById('feedback').scrollIntoView({ behavior: 'smooth' })}
+          itemSize={itemSize}
+          iconSize={iconSize}
+        />
+        <SidebarItem 
+          icon={<FaNewspaper />} 
+          label="News" 
+          onClick={() => document.getElementById('news').scrollIntoView({ behavior: 'smooth' })}
+          itemSize={itemSize}
+          iconSize={iconSize}
+        />
         {showScrollTop && (
-          <button 
+          <SidebarItem 
+            icon={<FaArrowUp />} 
+            label="Back to Top" 
             onClick={scrollToTop}
-            className="bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-            aria-label="Scroll to top"
-          >
-            <FaArrowUp className="text-blue-500 group-hover:text-blue-600 transition-colors" />
-          </button>
+            itemSize={itemSize}
+            iconSize={iconSize}
+          />
         )}
       </div>
     </div>
   );
 }
 
-function SidebarItem({ icon, label }) {
+function SidebarItem({ icon, label, onClick, itemSize, iconSize }) {
   return (
     <div className="relative group">
-      <div className="bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-        <div className="text-blue-500 text-xl group-hover:text-blue-600 transition-colors">
+      <div 
+        className={`bg-white ${itemSize} rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer`}
+        onClick={onClick}
+      >
+        <div className={`text-blue-500 ${iconSize} group-hover:text-blue-600 transition-colors`}>
           {icon}
         </div>
       </div>

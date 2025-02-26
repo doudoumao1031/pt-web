@@ -1,68 +1,57 @@
-import { useState } from 'react'
-import { HiOutlineUpload } from 'react-icons/hi'
+import { useState } from 'react';
+import Image from 'next/image';
+import { FaUser } from 'react-icons/fa';
 
 export default function Feedback() {
-  const [feedback, setFeedback] = useState('')
-  const [charCount, setCharCount] = useState(0)
-  
-  const handleFeedbackChange = (e) => {
-    const text = e.target.value
-    if (text.length <= 520) {
-      setFeedback(text)
-      setCharCount(text.length)
-    }
-  }
-  
+  const [avatarErrors, setAvatarErrors] = useState({
+    1: false,
+    2: false,
+    3: false
+  });
+
+  const handleAvatarError = (id) => {
+    setAvatarErrors(prev => ({
+      ...prev,
+      [id]: true
+    }));
+  };
+
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-center mb-8">Feedback</h2>
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-medium text-gray-800 text-center mb-16">What our users say</h2>
         
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <textarea
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="5"
-            placeholder="Enter the problem you are experiencing"
-            value={feedback}
-            onChange={handleFeedbackChange}
-          ></textarea>
-          
-          <div className="flex justify-end text-sm text-gray-500 mt-1">
-            <span>{charCount}/520</span>
-          </div>
-          
-          <div className="mt-4">
-            <button className="flex items-center text-blue-600 hover:text-blue-800">
-              <HiOutlineUpload className="mr-1" /> Upload photos
-            </button>
-            <p className="text-xs text-gray-500 mt-1">
-              *Two pictures could be uploaded at most one time, and the network capacity size of every picture cannot be over 3M.
-            </p>
-          </div>
-          
-          <button className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 w-full">
-            Submit
-          </button>
-          
-          <div className="mt-8">
-            <h3 className="font-semibold text-lg mb-4">Hot issues</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded mr-2 mt-0.5">HOT</span>
-                <a href="#" className="text-blue-600 hover:underline">Mobile phone can not be logged in, quickly bind email address</a>
-              </li>
-              <li className="flex items-start">
-                <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded mr-2 mt-0.5">HOT</span>
-                <a href="#" className="text-blue-600 hover:underline">Why do I need to register by email?</a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-600 hover:underline">How to download the latest version of Potato?</a>
-              </li>
-              <li>
-                <a href="#" className="text-blue-600 hover:underline">What if the registration/login fails to send the verification code?</a>
-              </li>
-            </ul>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[1, 2, 3].map((item) => (
+            <div key={item} className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 relative mr-4">
+                  {!avatarErrors[item] ? (
+                    <Image 
+                      src={`/images/avatar-${item}.jpg`} 
+                      alt={`User ${item}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="rounded-full object-cover"
+                      onError={() => handleAvatarError(item)}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-blue-100 rounded-full">
+                      <FaUser className="text-blue-500 text-xl" />
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <h3 className="font-medium text-gray-800">User {item}</h3>
+                  <p className="text-gray-500 text-sm">Regular user</p>
+                </div>
+              </div>
+              <p className="text-gray-600">
+                "Potato Chat has completely changed how I communicate with friends and family. 
+                The interface is intuitive and the features are exactly what I need."
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

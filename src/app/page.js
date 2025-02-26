@@ -10,27 +10,41 @@ import Footer from '@/components/Footer'
 import { features } from '@/constants/features'
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+      setIsMobile(window.innerWidth < 768)
+    }
     
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
+    // Initial check
+    checkIfMobile()
     
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIfMobile)
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile)
+  }, [])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar isMobile={isMobile} />
-      {!isMobile && <Sidebar />}
+      <Sidebar isMobile={isMobile} />
       <main>
         <Hero isMobile={isMobile} />
-        <Features features={features} isMobile={isMobile} />
-        <Feedback />
+        <section id="features">
+          <Features features={features} isMobile={isMobile} />
+        </section>
+        <section id="feedback">
+          <Feedback />
+        </section>
+        <section id="news" className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-medium text-gray-800 text-center mb-16">Latest News</h2>
+            <p className="text-center text-gray-500">Stay tuned for the latest updates from Potato Chat!</p>
+          </div>
+        </section>
       </main>
       <Footer isMobile={isMobile} />
     </div>

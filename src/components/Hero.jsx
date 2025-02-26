@@ -1,6 +1,11 @@
+import { useState } from 'react';
+import Image from 'next/image';
 import { FaAndroid, FaApple, FaWindows, FaDownload } from 'react-icons/fa'
+import DownloadButtons from './client/DownloadButtons'
 
 export default function Hero({ isMobile }) {
+  const [screenshotError, setScreenshotError] = useState(false);
+
   if (isMobile) {
     return (
       <section className="pt-16 pb-6 bg-white">
@@ -12,20 +17,7 @@ export default function Hero({ isMobile }) {
               Reliable messaging
             </h1>
             
-            <div className="mt-6 mb-8">
-              <a href="#iphone" className="bg-blue-500 text-white px-6 py-3 rounded-full flex items-center justify-center mx-auto w-64 mb-3">
-                <FaApple className="mr-2" /> iPhone Download
-              </a>
-              <a href="#android" className="bg-blue-500 text-white px-6 py-3 rounded-full flex items-center justify-center mx-auto w-64 mb-3">
-                <FaAndroid className="mr-2" /> Android Download
-              </a>
-              <a href="#internal" className="bg-blue-100 text-blue-800 px-6 py-3 rounded-full flex items-center justify-center mx-auto w-64 mb-3">
-                <span className="mr-2">🔒</span> Internal test version (China Area)
-              </a>
-              <a href="#beta" className="text-blue-500 text-sm">
-                How to download beta version?
-              </a>
-            </div>
+            <DownloadButtons isMobile={true} />
           </div>
         </div>
       </section>
@@ -47,37 +39,61 @@ export default function Hero({ isMobile }) {
               With POTATO, you can send and receive messages and calls quickly, easily and securely around the world via your mobile phone.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <a href="#android" className="bg-blue-50 text-gray-800 px-6 py-4 rounded-lg flex items-center hover:bg-blue-100 transition-colors">
-                <FaAndroid className="mr-4 text-xl" /> Android
-              </a>
-              <a href="#windows" className="bg-blue-50 text-gray-800 px-6 py-4 rounded-lg flex items-center hover:bg-blue-100 transition-colors">
-                <FaWindows className="mr-4 text-xl" /> Windows
-              </a>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <a href="#iphone" className="bg-blue-50 text-gray-800 px-6 py-4 rounded-lg flex items-center hover:bg-blue-100 transition-colors">
-                <FaApple className="mr-4 text-xl" /> iPhone
-              </a>
-              <a href="#macos" className="bg-blue-50 text-gray-800 px-6 py-4 rounded-lg flex items-center hover:bg-blue-100 transition-colors">
-                <FaApple className="mr-4 text-xl" /> macOS
-              </a>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a href="#learn" className="bg-blue-50 text-gray-800 px-6 py-4 rounded-lg flex items-center hover:bg-blue-100 transition-colors">
-                Learn More
-              </a>
-            </div>
+            <DownloadButtons isMobile={false} />
           </div>
           
-          <div className="hidden md:block">
-            <img 
-              src="/images/chat-screenshot.png" 
-              alt="Potato App Screenshot" 
-              className="w-full h-auto"
-            />
+          <div className="hidden md:block relative h-[500px]">
+            {!screenshotError ? (
+              <Image 
+                src="/images/chat-screenshot.png" 
+                alt="Potato App Screenshot" 
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain"
+                onError={() => setScreenshotError(true)}
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gray-100 rounded-xl overflow-hidden flex flex-col">
+                <div className="h-12 bg-blue-500 flex items-center px-4">
+                  <div className="w-8 h-8 rounded-full bg-white"></div>
+                  <div className="ml-3">
+                    <div className="h-3 w-24 bg-white rounded-full"></div>
+                    <div className="h-2 w-16 bg-white bg-opacity-70 rounded-full mt-1"></div>
+                  </div>
+                </div>
+                <div className="flex-1 p-4">
+                  <div className="flex mb-4">
+                    <div className="w-8 h-8 rounded-full bg-blue-200 flex-shrink-0"></div>
+                    <div className="ml-2 bg-blue-100 p-2 rounded-lg rounded-tl-none">
+                      <div className="h-2 w-32 bg-blue-300 rounded-full"></div>
+                      <div className="h-2 w-24 bg-blue-300 rounded-full mt-1"></div>
+                    </div>
+                  </div>
+                  <div className="flex justify-end mb-4">
+                    <div className="mr-2 bg-green-100 p-2 rounded-lg rounded-tr-none">
+                      <div className="h-2 w-32 bg-green-300 rounded-full"></div>
+                      <div className="h-2 w-40 bg-green-300 rounded-full mt-1"></div>
+                      <div className="h-2 w-20 bg-green-300 rounded-full mt-1"></div>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-green-200 flex-shrink-0"></div>
+                  </div>
+                  <div className="flex mb-4">
+                    <div className="w-8 h-8 rounded-full bg-blue-200 flex-shrink-0"></div>
+                    <div className="ml-2 bg-blue-100 p-2 rounded-lg rounded-tl-none">
+                      <div className="h-2 w-40 bg-blue-300 rounded-full"></div>
+                      <div className="h-2 w-32 bg-blue-300 rounded-full mt-1"></div>
+                      <div className="h-2 w-24 bg-blue-300 rounded-full mt-1"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="h-12 bg-gray-200 flex items-center px-4">
+                  <div className="h-8 flex-1 bg-white rounded-full mx-2"></div>
+                  <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                    <div className="w-4 h-4 bg-white rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
