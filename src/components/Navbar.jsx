@@ -1,4 +1,8 @@
+'use client'
+
 import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { FaTwitter, FaBars } from 'react-icons/fa'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
@@ -11,15 +15,16 @@ export default function Navbar({ isMobile }) {
         <div className="px-4">
           <div className="flex justify-between h-14 items-center">
             <div className="flex-shrink-0">
-              <a href="/" className="group">
-                <div className="w-32">
-                  <img 
+              <Link href="/" className="group">
+                <div className="w-32 relative h-8">
+                  <Image 
                     src="/images/ic_header_logo.svg" 
-                    alt="Potato Chat" 
-                    className="w-full h-full object-contain"
+                    alt="Potato Chat"
+                    fill
+                    className="object-contain"
                   />
                 </div>
-              </a>
+              </Link>
             </div>
             
             <button 
@@ -32,12 +37,12 @@ export default function Navbar({ isMobile }) {
           
           {menuOpen && (
             <div className="py-2 border-t border-gray-200">
-              <a href="#home" className="block py-2 text-blue-500">HOME</a>
-              <a href="#apps" className="block py-2 text-gray-600">APPS</a>
-              <a href="#developer" className="block py-2 text-gray-600">DEVELOPER</a>
-              <a href="#faq" className="block py-2 text-gray-600">FAQ</a>
-              <a href="#privacy" className="block py-2 text-gray-600">PRIVACY</a>
-              <a href="#news" className="block py-2 text-gray-600">NEWS</a>
+              <Link href="#home" className="block py-2 text-blue-500">HOME</Link>
+              <Link href="#apps" className="block py-2 text-gray-600">APPS</Link>
+              <Link href="#developer" className="block py-2 text-gray-600">DEVELOPER</Link>
+              <Link href="#faq" className="block py-2 text-gray-600">FAQ</Link>
+              <Link href="#privacy" className="block py-2 text-gray-600">PRIVACY</Link>
+              <Link href="#news" className="block py-2 text-gray-600">NEWS</Link>
             </div>
           )}
         </div>
@@ -50,25 +55,26 @@ export default function Navbar({ isMobile }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
-            <a href="/" className="group transition-all duration-300">
-              <div className="relative w-40 transform group-hover:scale-105 transition-transform">
-                <img 
+            <Link href="/" className="group transition-all duration-300">
+              <div className="relative w-40 h-12 transform group-hover:scale-105 transition-transform">
+                <Image 
                   src="/images/ic_header_logo.svg" 
-                  alt="Potato Chat" 
-                  className="w-full h-full object-contain group-hover:drop-shadow-lg transition-all"
+                  alt="Potato Chat"
+                  fill
+                  className="object-contain group-hover:drop-shadow-lg transition-all"
                 />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:shadow-lg group-hover:shadow-blue-200 transition-opacity"></div>
               </div>
-            </a>
+            </Link>
           </div>
           
           <div className="hidden md:flex space-x-12">
-            <a href="#home" className="text-blue-500 border-b-2 border-blue-500 pb-1 font-medium">HOME</a>
-            <a href="#apps" className="text-gray-400 hover:text-blue-500 font-medium">APPS</a>
-            <a href="#developer" className="text-gray-400 hover:text-blue-500 font-medium">DEVELOPER</a>
-            <a href="#faq" className="text-gray-400 hover:text-blue-500 font-medium">FAQ</a>
-            <a href="#privacy" className="text-gray-400 hover:text-blue-500 font-medium">PRIVACY</a>
-            <a href="#news" className="text-gray-400 hover:text-blue-500 font-medium">NEWS</a>
+            <Link href="#home" className="text-blue-500 border-b-2 border-blue-500 pb-1 font-medium">HOME</Link>
+            <Link href="#apps" className="text-gray-400 hover:text-blue-500 font-medium">APPS</Link>
+            <Link href="#developer" className="text-gray-400 hover:text-blue-500 font-medium">DEVELOPER</Link>
+            <Link href="#faq" className="text-gray-400 hover:text-blue-500 font-medium">FAQ</Link>
+            <Link href="#privacy" className="text-gray-400 hover:text-blue-500 font-medium">PRIVACY</Link>
+            <Link href="#news" className="text-gray-400 hover:text-blue-500 font-medium">NEWS</Link>
           </div>
 
           <div className="flex items-center space-x-6">
@@ -76,9 +82,9 @@ export default function Navbar({ isMobile }) {
               <span>English</span>
               <ChevronDownIcon className="h-5 w-5 ml-1" />
             </div>
-            <a href="#twitter" className="text-gray-400 hover:text-blue-500">
+            <Link href="#twitter" className="text-gray-400 hover:text-blue-500">
               <FaTwitter className="h-5 w-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

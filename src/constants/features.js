@@ -1,18 +1,13 @@
 export const features = [
   {
-    title: "Safe",
-    description: "Use the most advanced encryption technology to ensure information security",
-    icon: "ic_safe.svg"
-  },
-  {
     title: "Cloud",
     description: "Support multi-terminal login, message will synchronize automatically",
     icon: "ic_cloud.svg"
   },
   {
-    title: "Moments",
-    description: "Share and post updates",
-    icon: "ic_moments.svg"
+    title: "Safe",
+    description: "Use the most advanced encryption technology to ensure information security",
+    icon: "ic_safe.svg"
   },
   {
     title: "Free",
@@ -60,6 +55,11 @@ export const features = [
     icon: "ic_videocall.svg"
   },
   {
+    title: "Moments",
+    description: "Share and post updates",
+    icon: "ic_moments.svg"
+  },
+  {
     title: "People Nearby",
     description: "Find your friends based on location",
     icon: "ic_nearby.svg"
@@ -67,6 +67,6 @@ export const features = [
   {
     title: "Mini Programs",
     description: "Experience it without downloading and installation",
-    icon: "ic_applets.svg"
+    icon: "ic_miniprograms.svg"
   }
 ] 

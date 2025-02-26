@@ -1,3 +1,7 @@
+'use client'
+
+import Image from 'next/image';
+
 export default function Features({ features, isMobile }) {
   if (isMobile) {
     return (
@@ -11,11 +15,12 @@ export default function Features({ features, isMobile }) {
                 key={index} 
                 className="flex items-start"
               >
-                <div className={`w-12 h-12 mr-4 flex-shrink-0 ${getFeatureColor(feature.title)}`}>
-                  <img 
+                <div className={`w-12 h-12 mr-4 flex-shrink-0 relative`}>
+                  <Image 
                     src={`/images/${feature.icon}`} 
-                    alt={feature.title} 
-                    className="w-full h-full object-contain"
+                    alt={feature.title}
+                    fill
+                    className="object-contain"
                   />
                 </div>
                 <div>
@@ -42,11 +47,12 @@ export default function Features({ features, isMobile }) {
               key={index} 
               className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
             >
-              <div className="w-40 h-40 flex items-center justify-center mb-8">
-                <img 
+              <div className="w-40 h-40 flex items-center justify-center mb-8 relative">
+                <Image 
                   src={`/images/${feature.icon}`} 
-                  alt={feature.title} 
-                  className="w-full h-full object-contain"
+                  alt={feature.title}
+                  fill
+                  className="object-contain"
                 />
               </div>
               <h3 className="text-3xl font-medium text-gray-700 mb-4 hover:text-blue-500 transition-colors duration-300">{feature.title}</h3>
