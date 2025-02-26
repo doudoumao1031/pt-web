@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { FaUser } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 export default function Feedback() {
+  const { t } = useTranslation();
   const [avatarErrors, setAvatarErrors] = useState({
     1: false,
     2: false,
@@ -19,7 +21,7 @@ export default function Feedback() {
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-medium text-gray-800 text-center mb-16">What our users say</h2>
+        <h2 className="text-4xl font-medium text-gray-800 text-center mb-16">{t('feedback.title')}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[1, 2, 3].map((item) => (
@@ -29,7 +31,7 @@ export default function Feedback() {
                   {!avatarErrors[item] ? (
                     <Image 
                       src={`/images/avatar-${item}.jpg`} 
-                      alt={`User ${item}`}
+                      alt={`${t('feedback.user')} ${item}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="rounded-full object-cover"
@@ -42,13 +44,12 @@ export default function Feedback() {
                   )}
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-800">User {item}</h3>
-                  <p className="text-gray-500 text-sm">Regular user</p>
+                  <h3 className="font-medium text-gray-800">{t('feedback.user')} {item}</h3>
+                  <p className="text-gray-500 text-sm">{t('feedback.regularUser')}</p>
                 </div>
               </div>
               <p className="text-gray-600">
-                "Potato Chat has completely changed how I communicate with friends and family. 
-                The interface is intuitive and the features are exactly what I need."
+                "{t('feedback.testimonial')}"
               </p>
             </div>
           ))}
@@ -56,4 +57,4 @@ export default function Feedback() {
       </div>
     </section>
   )
-} 
+}

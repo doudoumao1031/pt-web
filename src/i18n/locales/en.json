@@ -85,7 +85,9 @@
     "title": "What our users say",
     "user": "User",
     "regularUser": "Regular user",
-    "testimonial": "Potato Chat has completely changed how I communicate with friends and family. The interface is intuitive and the features are exactly what I need."
+    "testimonial": "Potato Chat has completely changed how I communicate with friends and family. The interface is intuitive and the features are exactly what I need.",
+    "feedbackTitle": "Feedback",
+    "feedbackDescription": "Hear from our users"
   },
   "news": {
     "title": "Latest News",
@@ -97,7 +99,9 @@
     "community": "Official Community",
     "subscribe": "Subscribe to us",
     "emailPlaceholder": "Enter your email to subscribe",
-    "subscribeButton": "Email subscription"
+    "subscribeButton": "Email subscription",
+    "footerTitle": "Footer",
+    "footerDescription": "Get in touch with us"
   },
   "sidebar": {
     "features": "Features",
