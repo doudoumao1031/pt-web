@@ -34,3 +34,5 @@ next-env.d.ts
 
 # generated SVGs (optional, remove if you want to commit these)
 # /public/images/*.svg
+
+.vscode
