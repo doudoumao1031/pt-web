@@ -1,0 +1,17 @@
+potato-mock/
+├── public/
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Features.jsx
+│   │   └── Footer.jsx
+│   ├── constants/
+│   │   └── features.js
+│   ├── App.jsx
+│   ├── index.js
+│   └── index.css
+├── tailwind.config.js
+├── postcss.config.js
+└── package.json 

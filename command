@@ -1,0 +1,1 @@
+npm install --save-dev eslint-config-react-app @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks 
